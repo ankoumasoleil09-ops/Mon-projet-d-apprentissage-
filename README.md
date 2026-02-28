@@ -229,7 +229,7 @@ footer{
 
 <section id="home" class="hero">
   <img src="photo.jpg" class="profile-pic">
-  <h1>Bonjour 👋 Je suis Soleil</h1>
+  <h1>Bonjour 👋 Je suis Soleil-Levant</h1>
   <div class="typing"></div>
   <a href="cv.pdf" class="btn" download>Télécharger mon CV</a>
 </section>
