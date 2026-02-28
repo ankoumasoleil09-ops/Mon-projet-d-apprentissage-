@@ -3,273 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mon Portfolio Pro</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<title>Portfolio - Soleil Ankouma</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
-    font-family:'Poppins', sans-serif;
-    scroll-behavior:smooth;
-    background:#f5f7fa;
-    color:#333;
+  background: linear-gradient(-45deg,#0f172a,#1e293b,#0ea5e9,#0f172a);
+  background-size:400% 400%;
+  animation:gradientBG 12s ease infinite;
+  color:white;
+  scroll-behavior:smooth;
+  transition:0.4s;
 }
 
-header{
-    position:fixed;
-    width:100%;
-    top:0;
-    background:white;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    padding:15px 50px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:1000;
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-header h1{
-    font-size:22px;
-    color:#00bcd4;
+body.light{
+  background:#f1f5f9;
+  color:#111;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:rgba(0,0,0,0.6);
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(10px);
 }
 
 nav ul{
-    list-style:none;
-    display:flex;
+  display:flex;
+  list-style:none;
 }
 
 nav ul li{
-    margin-left:20px;
+  margin-left:20px;
 }
 
-nav ul li a{
-    text-decoration:none;
-    color:#333;
-    font-weight:500;
-    transition:0.3s;
+nav a{
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
 }
 
-nav ul li a:hover{
-    color:#00bcd4;
+.toggle{
+  cursor:pointer;
+  background:#38bdf8;
+  padding:8px 15px;
+  border-radius:20px;
+  color:black;
+  font-weight:bold;
 }
 
+/* HERO */
 .hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:linear-gradient(135deg,#00bcd4,#2196f3);
-    color:white;
-    padding:20px;
+  text-align:center;
+  padding:100px 20px;
 }
 
-.hero h2{
-    font-size:40px;
-    margin-bottom:15px;
+.profile-pic{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  border:4px solid #38bdf8;
+  margin-bottom:20px;
 }
 
-.hero p{
-    max-width:600px;
-    margin-bottom:20px;
+.typing{
+  font-size:22px;
+  color:#38bdf8;
+  min-height:28px;
 }
 
-button{
-    padding:12px 25px;
-    border:none;
-    border-radius:30px;
-    background:white;
-    color:#2196f3;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
+.btn{
+  padding:12px 25px;
+  background:#38bdf8;
+  color:black;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:30px;
+  display:inline-block;
+  margin-top:20px;
+  transition:0.3s;
 }
 
-button:hover{
-    transform:scale(1.05);
+.btn:hover{
+  transform:scale(1.1);
 }
 
+/* SECTIONS */
 section{
-    padding:100px 50px;
-    text-align:center;
-}
-
-section h2{
-    margin-bottom:30px;
-    font-size:30px;
-    color:#2196f3;
-}
-
-.card-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+  padding:80px 20px;
+  text-align:center;
 }
 
 .card{
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
-    transition:0.3s;
+  background:rgba(255,255,255,0.1);
+  padding:20px;
+  margin:20px auto;
+  width:280px;
+  border-radius:15px;
+  transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-10px);
+  transform:translateY(-10px);
 }
 
-.image-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-    margin-top:20px;
+/* SKILLS */
+.skill{
+  margin:20px auto;
+  width:60%;
+  text-align:left;
 }
 
-.image-card{
-    background:white;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
-    overflow:hidden;
-    transition:0.3s;
+.bar{
+  background:#334155;
+  border-radius:20px;
+  overflow:hidden;
 }
 
-.image-card img{
-    width:100%;
-    display:block;
-    border-bottom:1px solid #ddd;
+.progress{
+  height:12px;
+  background:#38bdf8;
+  width:0;
+  transition:1.5s;
 }
 
-.image-card p{
-    padding:15px;
-    font-weight:500;
-    color:#333;
-    text-align:center;
+/* FORM */
+form{
+  display:flex;
+  flex-direction:column;
+  width:300px;
+  margin:auto;
 }
 
-.image-card:hover{
-    transform:translateY(-10px);
+form input, form textarea{
+  margin:10px 0;
+  padding:10px;
+  border:none;
+  border-radius:8px;
 }
 
-.social-icons{
-    margin-top:20px;
+form button{
+  padding:10px;
+  background:#38bdf8;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.social-icons a{
-    margin:0 10px;
-    font-size:24px;
-    color:#2196f3;
-    transition:0.3s;
-}
-
-.social-icons a:hover{
-    color:#00bcd4;
-}
-
+/* FOOTER */
 footer{
-    background:#111;
-    color:white;
-    padding:20px;
-    text-align:center;
-}
-
-.dark{
-    background:#121212;
-    color:white;
-}
-
-.dark header{
-    background:#1e1e1e;
-}
-
-.dark .card, .dark .image-card{
-    background:#1e1e1e;
-    color:white;
+  padding:20px;
+  text-align:center;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Mon Portfolio</h1>
-    <nav>
-        <ul>
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#services">Compétences</a></li>
-            <li><a href="#portfolio">Projets</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<nav>
+  <h2>Soleil</h2>
+  <ul>
+    <li><a href="#home">Accueil</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="toggle" onclick="toggleMode()">Mode</div>
+</nav>
 
-<section class="hero" id="home">
-    <h2>Bienvenue sur mon site 🚀</h2>
-    <p>Je suis débutant dans la création de sites web et je continue d'apprendre HTML, CSS et JavaScript.</p>
-    <button onclick="theme()">Changer le thème</button>
+<section id="home" class="hero">
+  <img src="photo.jpg" class="profile-pic">
+  <h1>Bonjour 👋 Je suis Soleil</h1>
+  <div class="typing"></div>
+  <a href="cv.pdf" class="btn" download>Télécharger mon CV</a>
 </section>
 
-<section id="services">
-    <h2>Mes Compétences</h2>
-    <div class="card-container">
-        <div class="card">
-            <h3>HTML & CSS</h3>
-            <p>Création de sites modernes et responsives.</p>
-        </div>
-        <div class="card">
-            <h3>JavaScript</h3>
-            <p>Fonctionnalités interactives et dynamiques.</p>
-        </div>
-        <div class="card">
-            <h3>Design Web</h3>
-            <p>Interfaces propres et professionnelles.</p>
-        </div>
-    </div>
+<section id="skills">
+<h2>Mes Compétences</h2>
+
+<div class="skill">
+  <p>HTML</p>
+  <div class="bar"><div class="progress" data-width="90%"></div></div>
+</div>
+
+<div class="skill">
+  <p>CSS</p>
+  <div class="bar"><div class="progress" data-width="80%"></div></div>
+</div>
+
+<div class="skill">
+  <p>JavaScript</p>
+  <div class="bar"><div class="progress" data-width="60%"></div></div>
+</div>
+
 </section>
 
-<section id="portfolio">
-    <h2>Mes Projets</h2>
-    <div class="image-grid">
-        <div class="image-card">
-            <img src="https://via.placeholder.com/400x250" alt="Projet 1">
-            <p>Projet 1 - Site vitrine</p>
-        </div>
-        <div class="image-card">
-            <img src="https://via.placeholder.com/400x250" alt="Projet 2">
-            <p>Projet 2 - Application web</p>
-        </div>
-        <div class="image-card">
-            <img src="https://via.placeholder.com/400x250" alt="Projet 3">
-            <p>Projet 3 - Portfolio interactif</p>
-        </div>
-    </div>
+<section id="projects">
+<h2>Mes Projets</h2>
+
+<div class="card">
+  <h3>Portfolio Personnel</h3>
+  <p>Site moderne publié sur GitHub Pages.</p>
+</div>
+
+<div class="card">
+  <h3>Mini Application</h3>
+  <p>Projet interactif en JavaScript.</p>
+</div>
+
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <p>Email : exemple@email.com</p>
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fas fa-envelope"></i></a>
-    </div>
+<h2>Contact</h2>
+
+<form>
+  <input type="text" placeholder="Votre nom" required>
+  <input type="email" placeholder="Votre email" required>
+  <textarea rows="4" placeholder="Votre message"></textarea>
+  <button type="submit">Envoyer</button>
+</form>
+
 </section>
 
 <footer>
-    © 2026 Mon Portfolio | Développé avec passion 💻
+© 2026 Soleil Ankouma | Portfolio Professionnel
 </footer>
 
 <script>
-function theme(){
-    document.body.classList.toggle("dark");
+// MODE CLAIR / SOMBRE
+function toggleMode(){
+  document.body.classList.toggle("light");
 }
+
+// MACHINE À ÉCRIRE
+const text = "Développeur Web en apprentissage 🚀";
+let i = 0;
+function typing(){
+  if(i < text.length){
+    document.querySelector(".typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing,70);
+  }
+}
+typing();
+
+// BARRES ANIMÉES
+window.addEventListener("scroll", ()=>{
+  document.querySelectorAll(".progress").forEach(bar=>{
+    const position = bar.getBoundingClientRect().top;
+    if(position < window.innerHeight){
+      bar.style.width = bar.dataset.width;
+    }
+  });
+});
 </script>
 
 </body>
