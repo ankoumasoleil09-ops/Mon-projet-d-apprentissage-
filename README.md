@@ -33,15 +33,22 @@ body.light{
   color:#111;
 }
 
-/* NAV */
+/* NAVIGATION */
 nav{
   display:flex;
   justify-content:space-between;
-  padding:20px 60px;
+  align-items:center;
+  padding:15px 30px;
   background:rgba(0,0,0,0.6);
   position:sticky;
   top:0;
   backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+nav .logo{
+  font-weight:bold;
+  font-size:22px;
 }
 
 nav ul{
@@ -59,7 +66,8 @@ nav a{
   font-weight:bold;
 }
 
-.toggle{
+nav .toggle{
+  display:none;
   cursor:pointer;
   background:#38bdf8;
   padding:8px 15px;
@@ -75,8 +83,8 @@ nav a{
 }
 
 .profile-pic{
-  width:160px;
-  height:160px;
+  width:150px;
+  height:150px;
   border-radius:50%;
   border:4px solid #38bdf8;
   margin-bottom:20px;
@@ -106,15 +114,17 @@ nav a{
 
 /* SECTIONS */
 section{
-  padding:80px 20px;
+  padding:60px 20px;
   text-align:center;
 }
 
+/* CARDS */
 .card{
   background:rgba(255,255,255,0.1);
   padding:20px;
   margin:20px auto;
-  width:280px;
+  width:90%;
+  max-width:300px;
   border-radius:15px;
   transition:0.3s;
 }
@@ -126,7 +136,8 @@ section{
 /* SKILLS */
 .skill{
   margin:20px auto;
-  width:60%;
+  width:90%;
+  max-width:400px;
   text-align:left;
 }
 
@@ -147,7 +158,8 @@ section{
 form{
   display:flex;
   flex-direction:column;
-  width:300px;
+  width:90%;
+  max-width:350px;
   margin:auto;
 }
 
@@ -173,20 +185,46 @@ footer{
   text-align:center;
   font-size:14px;
 }
-</style>
-</head>
 
+/* RESPONSIVE MOBILE */
+@media (max-width:768px){
+  nav ul{
+    position:fixed;
+    top:0;
+    right:-100%;
+    height:100%;
+    width:200px;
+    background:rgba(0,0,0,0.95);
+    flex-direction:column;
+    padding-top:60px;
+    transition:0.3s;
+  }
+  nav ul li{
+    margin:20px 0;
+    text-align:center;
+  }
+  nav ul.active{
+    right:0;
+  }
+  nav .toggle{
+    display:block;
+  }
+}
+</style>
+
+</head>
 <body>
 
 <nav>
-  <h2>Soleil</h2>
+  <div class="logo">Soleil</div>
   <ul>
     <li><a href="#home">Accueil</a></li>
     <li><a href="#skills">Compétences</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#projects">Projets</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="toggle" onclick="toggleMode()">Mode</div>
+  <div class="toggle" onclick="toggleMenu()">☰</div>
 </nav>
 
 <section id="home" class="hero">
@@ -213,26 +251,49 @@ footer{
   <p>JavaScript</p>
   <div class="bar"><div class="progress" data-width="60%"></div></div>
 </div>
+</section>
 
+<section id="services">
+<h2>Mes Services</h2>
+
+<div class="card">
+  <h3>Création de site web</h3>
+  <p>Je crée des sites web modernes et responsives.</p>
+</div>
+
+<div class="card">
+  <h3>Design simple et propre</h3>
+  <p>Création de design clair, moderne et professionnel.</p>
+</div>
+
+<div class="card">
+  <h3>Maintenance</h3>
+  <p>Mise à jour et amélioration de site existant.</p>
+</div>
 </section>
 
 <section id="projects">
 <h2>Mes Projets</h2>
 
 <div class="card">
+  <img src="projet1.jpg" style="width:100%; border-radius:10px;">
   <h3>Portfolio Personnel</h3>
   <p>Site moderne publié sur GitHub Pages.</p>
 </div>
 
 <div class="card">
+  <img src="projet2.jpg" style="width:100%; border-radius:10px;">
   <h3>Mini Application</h3>
   <p>Projet interactif en JavaScript.</p>
 </div>
-
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
+
+<p>Email : <a href="mailto:ankoumasoleil09@gmail.com">ankoumasoleil09@gmail.com</a></p>
+<p>WhatsApp : <a href="https://wa.me/23672584404" target="_blank">Me contacter sur WhatsApp</a></p>
+<p>GitHub : <a href="https://github.com/ankoumasoleil09-ops" target="_blank">Mon GitHub</a></p>
 
 <form>
   <input type="text" placeholder="Votre nom" required>
@@ -240,7 +301,6 @@ footer{
   <textarea rows="4" placeholder="Votre message"></textarea>
   <button type="submit">Envoyer</button>
 </form>
-
 </section>
 
 <footer>
@@ -251,6 +311,11 @@ footer{
 // MODE CLAIR / SOMBRE
 function toggleMode(){
   document.body.classList.toggle("light");
+}
+
+// MENU BURGER MOBILE
+function toggleMenu(){
+  document.querySelector("nav ul").classList.toggle("active");
 }
 
 // MACHINE À ÉCRIRE
@@ -265,7 +330,7 @@ function typing(){
 }
 typing();
 
-// BARRES ANIMÉES
+// BARRES DE COMPETENCES ANIMEES
 window.addEventListener("scroll", ()=>{
   document.querySelectorAll(".progress").forEach(bar=>{
     const position = bar.getBoundingClientRect().top;
